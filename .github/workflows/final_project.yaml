@@ -1,0 +1,26 @@
+name: Check Student Code
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_student_code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Run student code
+        run: python check.py
+
+      - name: Check reference data
+        run: python check.py
