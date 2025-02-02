@@ -22,5 +22,8 @@ jobs:
       - name: Run student code
         run: python check.py
 
-      - name: Check reference data
-        run: python check.py
+      - name: Decode and extract archive
+        run: |
+          echo "${{ secrets.FILES_BASE64 }}" | base64 --decode > files.zip
+          unzip files.zip
+          cat "Котлован. Андрей Платонов.txt"

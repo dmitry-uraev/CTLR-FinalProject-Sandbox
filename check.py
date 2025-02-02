@@ -1,2 +1,9 @@
-with open('final_project/Отцы и дети. Тургенев.txt', encoding='windows-1251') as file:
-    print(''.join(file.readlines()[:10]))
+import pathlib
+
+
+files = pathlib.Path('./final_project')
+
+for file in files.iterdir():
+    if file.is_file():
+        with open(file, encoding='windows-1251') as f:
+            print(''.join(f.readlines()[:10]))
